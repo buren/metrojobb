@@ -52,16 +52,17 @@ Ad model:
 
 ```ruby
 ad = Metrojobb::Ad.new(
-  external_application: nil,
-  heading: nil,
-  job_title: nil,
-  summary: nil,
-  description: nil,
-  employer: nil,
-  employer_home_page: nil,
-  opportunities: nil,
-  from_date: nil,
-  to_date: nil,
+  order_number: '<<your-id>>'
+  external_application: true,
+  heading: '',
+  job_title: '',
+  summary: '',
+  description: '',
+  employer: '',
+  employer_home_page: '',
+  opportunities: '',
+  from_date: '2018-09-01',
+  to_date: '2018-10-01',
   external_logo_url: nil,
   application_url: nil,
   # relations
