@@ -20,7 +20,53 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+:information_source: For detailed usage please see the test suite in `spec/`.
+
+__Examples__
+
+Single model
+
+```ruby
+region = Metrojobb::Region.new(name: 'Stockholms län')
+region.valid? # => true
+region.errors[:region_id] # => []
+region.to_xml # => '<region><id>1</id></region>'
+```
+
+Single model with errors
+
+```ruby
+region = Metrojobb::Region.new(id: 'invalid id')
+region.valid? # => false
+region.errors[:region_id] # => ["is not included in the list"]
+```
+
+All values and relations:
+
+```ruby
+ad = Metrojobb::Ad.new(
+  external_application: nil,
+  heading: nil,
+  job_title: nil,
+  summary: nil,
+  description: nil,
+  employer: nil,
+  employer_home_page: nil,
+  opportunities: nil,
+  from_date: nil,
+  to_date: nil,
+  external_logo_url: nil,
+  application_url: nil,
+  # relations
+  location: Metrojobb::Location.new(city: 'Stockholm'),
+  contact: Metrojobb::Contact.new(name: 'buren'),
+  employment_type: Metrojobb::EmploymentType.new(id: '1'),
+  category: Metrojobb::Category.new(id: '1'),
+  region: Metrojobb::Region.new(id: '1')
+)
+
+ad.to_xml # Returns the ad as an XML-string
+```
 
 ## Development
 
