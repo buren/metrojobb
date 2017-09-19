@@ -12,5 +12,4 @@ require 'metrojobb/location'
 require 'metrojobb/region'
 
 module Metrojobb
-  ORDER_NUMBER = '<<order_number>>'
 end

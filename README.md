@@ -24,6 +24,13 @@ Or install it yourself as:
 
 __Examples__
 
+Create full XML-document
+
+```ruby
+ads = Metrojobb::Ads.new([ad])
+ads.to_xml # Returns full XML document
+```
+
 Single model
 
 ```ruby
@@ -41,7 +48,7 @@ region.valid? # => false
 region.errors[:region_id] # => ["is not included in the list"]
 ```
 
-All values and relations:
+Ad model:
 
 ```ruby
 ad = Metrojobb::Ad.new(
