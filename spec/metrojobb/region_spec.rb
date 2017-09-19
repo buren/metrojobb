@@ -1,6 +1,6 @@
 RSpec.describe Metrojobb::Region do
   it 'can convert it self to XML' do
-    contact = Metrojobb::Region.new(name: 'Heltid')
+    contact = Metrojobb::Region.new(name: 'Stockholms län')
     xml = contact.to_xml
 
     expect(xml).to include('<region>')
@@ -22,7 +22,7 @@ RSpec.describe Metrojobb::Region do
     end
 
     it 'adds no error on #region_id' do
-      type = Metrojobb::Region.new(name: 'Heltid')
+      type = Metrojobb::Region.new(name: 'Stockholms län')
       type.validate_known_region
 
       expect(type.errors[:region_id]).not_to include('is not included in the list')
@@ -32,14 +32,13 @@ RSpec.describe Metrojobb::Region do
   describe '#region_id' do
     [
       # input, expected
-      ['Heltid', '1'],
-      ['1', '1'],
-      ['Deltid', '2'],
-      ['2', '2'],
-      ['Vikariat', '3'],
-      ['3', '3'],
-      ['Extra / Säsong / Visstid', '4'],
-      ['4', '4'],
+      ['Gotlands län', '9'],
+      ['9', '9'],
+      ['Motala', '583'],
+      ['Tomelilla', '1270'],
+      ['Sverige', '10001'],
+      ['Østfold', '12300'],
+      ['Saint Martin (franska delen)', '14235'],
       # bad data
       [nil, nil],
       ['1111', '1111'],
