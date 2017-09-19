@@ -22,6 +22,7 @@ module Metrojobb
       :to_date,
       :external_logo_url,
       :application_url,
+      :video_url,
       # relations
       :location,
       :contact,
@@ -68,6 +69,7 @@ module Metrojobb
         node.todate(to_date)
         node.externalLogoUrl{ |n| n.cdata!(external_logo_url.to_s) }
         node.applicationURL { |n| n.cdata!(application_url.to_s) }
+        node.videoURL { |n| n.cdata!(video_url.to_s) }
 
         location.to_xml(builder: node) if location
         contact.to_xml(builder: node) if contact

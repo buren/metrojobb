@@ -63,8 +63,9 @@ ad = Metrojobb::Ad.new(
   opportunities: '',
   from_date: '2018-09-01',
   to_date: '2018-10-01',
-  external_logo_url: nil,
-  application_url: nil,
+  external_logo_url: 'https://example.com',
+  application_url: 'https://example.com',
+  video_url: 'https://example.com',
   # relations
   location: Metrojobb::Location.new(city: 'Stockholm'),
   contact: Metrojobb::Contact.new(name: 'buren'),

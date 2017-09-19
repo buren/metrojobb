@@ -24,7 +24,8 @@ RSpec.describe Metrojobb::Ad do
       [:from_date, 'fromdate', '2018-09-01', false],
       [:to_date, 'todate', '2018-09-01', false],
       [:external_logo_url, 'externalLogoUrl', 'http://exmple.com', true],
-      [:application_url, 'applicationURL', 'http://exmple.com', true]
+      [:application_url, 'applicationURL', 'http://exmple.com', true],
+      [:video_url, 'videoURL', 'http://exmple.com', true]
     ].each do |data|
       attribute, node_name, value, cdata = data
 
