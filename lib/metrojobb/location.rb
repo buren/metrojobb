@@ -1,9 +1,7 @@
 require 'active_model'
 
 module Metrojobb
-  class Location
-    include ActiveModel::Model
-
+  class Location < Model
     attr_accessor :street, :postal_code, :city
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: 2))

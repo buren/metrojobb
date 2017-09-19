@@ -1,9 +1,7 @@
 require 'active_model'
 
 module Metrojobb
-  class Contact
-    include ActiveModel::Model
-
+  class Contact < Model
     attr_accessor :name, :phone, :email
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: 2))

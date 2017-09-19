@@ -1,6 +1,8 @@
 require 'builder'
 
 require 'metrojobb/version'
+# models
+require 'metrojobb/model'
 require 'metrojobb/ad'
 require 'metrojobb/category'
 require 'metrojobb/contact'

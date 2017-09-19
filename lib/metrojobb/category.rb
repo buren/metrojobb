@@ -2,9 +2,7 @@ require 'csv'
 require 'active_model'
 
 module Metrojobb
-  class Category
-    include ActiveModel::Model
-
+  class Category < Model
     attr_accessor :id, :name
 
     NAME_ID_MAP = CSV.read(

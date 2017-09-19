@@ -1,9 +1,7 @@
 require 'active_model'
 
 module Metrojobb
-  class Ad
-    include ActiveModel::Model
-
+  class Ad < Model
     attr_accessor *[
       :external_application,
       :heading,

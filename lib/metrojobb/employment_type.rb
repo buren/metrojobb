@@ -1,9 +1,7 @@
 require 'active_model'
 
 module Metrojobb
-  class EmploymentType
-    include ActiveModel::Model
-
+  class EmploymentType < Model
     attr_accessor :id, :name
 
     NAME_ID_MAP = CSV.read(
