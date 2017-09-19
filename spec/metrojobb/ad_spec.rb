@@ -24,6 +24,13 @@ RSpec.describe Metrojobb::Ad do
       end
     end
 
+    it 'has correct orderno attribute on ad node' do
+      ad = Metrojobb::Ad.new(order_number: 'order_number_value')
+      xml = ad.to_xml
+
+      expect(xml).to include("<ad orderno=\"order_number_value\"")
+    end
+
     [
       [:location, 'location', Metrojobb::Location.new(city: 'Stockholm')],
       [:contact, 'contact', Metrojobb::Contact.new(name: 'buren')],
@@ -44,6 +51,7 @@ RSpec.describe Metrojobb::Ad do
 
   describe '#validate' do
     %i[
+      order_number
       heading
       job_title
       summary

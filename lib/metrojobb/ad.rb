@@ -9,6 +9,7 @@ module Metrojobb
     TYPE_ERROR_MSG = 'unknown type'
 
     attr_accessor *[
+      :order_number,
       :external_application,
       :heading,
       :job_title,
@@ -29,6 +30,7 @@ module Metrojobb
       :region
     ]
 
+    validates :order_number, presence: true
     validates :heading, presence: true
     validates :job_title, presence: true
     validates :summary, presence: true
@@ -47,7 +49,7 @@ module Metrojobb
     validate :validate_region_type
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
-      builder.ad do |node|
+      builder.ad(orderno: order_number) do |node|
         node.externalApplication(external_application)
         node.heading(heading)
         node.jobTitle(job_title)
