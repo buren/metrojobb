@@ -48,6 +48,12 @@ module Metrojobb
     validate :validate_category_type
     validate :validate_region_type
 
+    validate :validate_location_valid
+    validate :validate_contact_valid
+    validate :validate_employment_type_valid
+    validate :validate_category_valid
+    validate :validate_region_valid
+
     def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.ad(orderno: order_number) do |node|
         node.externalApplication(external_application)
@@ -104,6 +110,41 @@ module Metrojobb
      return if region.is_a?(Region)
 
      errors.add(:region, TYPE_ERROR_MSG)
+    end
+
+    def validate_location_valid
+      return unless location.respond_to?(:valid?)
+      return if location.valid?
+
+      errors.add(:location, :invalid)
+    end
+
+    def validate_contact_valid
+      return unless contact.respond_to?(:valid?)
+      return if contact.valid?
+
+      errors.add(:contact, :invalid)
+    end
+
+    def validate_employment_type_valid
+      return unless employment_type.respond_to?(:valid?)
+      return if employment_type.valid?
+
+      errors.add(:employment_type, :invalid)
+    end
+
+    def validate_category_valid
+      return unless category.respond_to?(:valid?)
+      return if category.valid?
+
+      errors.add(:category, :invalid)
+    end
+
+    def validate_region_valid
+      return unless region.respond_to?(:valid?)
+      return if region.valid?
+
+      errors.add(:region, :invalid)
     end
   end
 end

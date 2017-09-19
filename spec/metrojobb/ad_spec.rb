@@ -114,6 +114,16 @@ RSpec.describe Metrojobb::Ad do
 
         expect(ad.errors[attribute]).to include(Metrojobb::Ad::TYPE_ERROR_MSG)
       end
+
+      # location and contact models can't be invalid
+      unless attribute == :location || attribute == :contact
+        it "adds invalid error if #{attribute} is not valid" do
+          ad = Metrojobb::Ad.new(attribute => relation)
+          ad.validate
+
+          expect(ad.errors[attribute]).to include('is invalid')
+        end
+      end
     end
   end
 end
