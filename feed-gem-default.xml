@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ads>
+  <ad orderno=""><!-- ordno Required attribute -->
+    <externalApplication>true</externalApplication>
+    <heading></heading><!-- Required -->
+    <jobTitle></jobTitle><!-- Required -->
+    <summary></summary>
+    <description></description><!-- Required -->
+    <location>
+      <city></city>
+    </location><!-- Required locationType -->
+    <contact>
+      <name></name>
+      <phone></phone>
+      <email></email>
+    </contact><!-- contactType (not required) -->
+    <category>
+      <name></name>
+    </category><!-- Required idOrTextAttributeType -->
+    <employmentType>
+      <name></name>
+    </employmentType>
+    <employer></employer>
+    <employerHomePage></employerHomePage>
+    <opportunities></opportunities>
+    <region>
+      <name></name>
+    </region>
+    <fromdate></fromdate>
+    <todate></todate>
+    <externalLogoUrl></externalLogoUrl>
+    <applicationURL></applicationURL><!-- Required -->
+  </ad>
+</ads>
