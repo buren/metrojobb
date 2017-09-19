@@ -8,16 +8,22 @@ module Metrojobb
       File.expand_path('../../../data/regions.csv', __FILE__)
     ).to_h.invert.freeze
 
-    ID_NAME_MAP = NAME_ID_MAP.invert.freeze
-
     validate :validate_known_region
+
+    def self.names
+      NAME_ID_MAP.keys
+    end
+
+    def self.ids
+      NAME_ID_MAP.values
+    end
 
     def self.name_id_map
       NAME_ID_MAP
     end
 
     def self.id_name_map
-      ID_NAME_MAP
+      NAME_ID_MAP.invert
     end
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: DEFAULT_INDENT))
@@ -27,13 +33,13 @@ module Metrojobb
     end
 
     def region_id
-      NAME_ID_MAP[name.presence || id.presence] ||
+      self.class.name_id_map[name.presence || id.presence] ||
         id.presence ||
         name.presence
     end
 
     def validate_known_region
-      return if ID_NAME_MAP[region_id]
+      return if self.class.id_name_map[region_id]
 
       errors.add(:region_id, :inclusion)
     end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    metrojobb (0.2.1)
+    metrojobb (0.3.0)
       activemodel (~> 5.0)
       builder (~> 3.2)
 
