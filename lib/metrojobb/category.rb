@@ -13,6 +13,14 @@ module Metrojobb
 
     validate :validate_known_category
 
+    def self.name_id_map
+      NAME_ID_MAP
+    end
+
+    def self.id_name_map
+      ID_NAME_MAP
+    end
+
     def to_xml(builder: Builder::XmlMarkup.new(indent: DEFAULT_INDENT))
       builder.category do |node|
         node.id(category_id.to_s)
