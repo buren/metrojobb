@@ -61,6 +61,29 @@ RSpec.describe Metrojobb::Ad do
     end
 
     [
+      :from_date,
+      :to_date
+    ].each do |data|
+      attribute = data
+
+      it "adds error if #{attribute} is an invalid date" do
+        ad = Metrojobb::Ad.new(attribute => 'asdkl')
+        ad.validate
+
+        error_message = Metrojobb::Ad::INVALID_DATE_FORMAT_MSG
+        expect(ad.errors[attribute]).to include(error_message)
+      end
+
+      it "does not add error if #{attribute} is an valid date" do
+        ad = Metrojobb::Ad.new(attribute => '2018-09-01')
+        ad.validate
+
+        error_message = Metrojobb::Ad::INVALID_DATE_FORMAT_MSG
+        expect(ad.errors[attribute]).not_to include(error_message)
+      end
+    end
+
+    [
       # attribute, value
       [:location, Metrojobb::Location.new],
       [:contact, Metrojobb::Contact.new],

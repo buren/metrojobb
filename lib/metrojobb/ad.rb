@@ -1,7 +1,13 @@
+require 'date'
 require 'active_model'
 
 module Metrojobb
   class Ad < Model
+    YYYY_MM_DD_REGEX = /\d{4}-\d{2}-\d{2}/
+
+    INVALID_DATE_FORMAT_MSG = "must be in the following format: YYYY-MM-DD"
+    TYPE_ERROR_MSG = 'unknown type'
+
     attr_accessor *[
       :external_application,
       :heading,
@@ -31,15 +37,14 @@ module Metrojobb
     validates :category, presence: true
     validates :region, presence: true
 
+    validates_format_of :from_date, with: YYYY_MM_DD_REGEX, message: INVALID_DATE_FORMAT_MSG
+    validates_format_of :to_date, with: YYYY_MM_DD_REGEX, message: INVALID_DATE_FORMAT_MSG
+
     validate :validate_location_type
     validate :validate_contact_type
     validate :validate_employment_type_type
     validate :validate_category_type
     validate :validate_region_type
-
-    TYPE_ERROR_MSG = 'unknown type'
-
-    # TODO: Add date validation to #from_date and #to_date
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.ad do |node|
