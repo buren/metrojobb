@@ -4,8 +4,8 @@ RSpec.describe Metrojobb::Contact do
     xml = contact.to_xml
 
     expect(xml).to include('<contact>')
-    expect(xml).to include('<name>buren</name>')
-    expect(xml).to include('<phone>123</phone>')
+    expect(xml).to include('<name><![CDATA[buren]]></name>')
+    expect(xml).to include('<phone><![CDATA[123]]></phone>')
   end
 
   it 'retruns true when sent #valid?' do

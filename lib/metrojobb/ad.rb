@@ -54,20 +54,20 @@ module Metrojobb
     validate :validate_category_valid
     validate :validate_region_valid
 
-    def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
+    def to_xml(builder: Builder::XmlMarkup.new(indent: DEFAULT_INDENT))
       builder.ad(orderno: order_number) do |node|
         node.externalApplication(external_application)
-        node.heading(heading)
-        node.jobTitle(job_title)
-        node.summary(summary)
-        node.description(description)
-        node.employer(employer)
-        node.employerHomePage(employer_home_page)
-        node.opportunities(opportunities)
+        node.heading { |n| n.cdata!(heading.to_s) }
+        node.jobTitle { |n| n.cdata!(job_title.to_s) }
+        node.summary { |n| n.cdata!(summary.to_s) }
+        node.description{ |n| n.cdata!(description.to_s) }
+        node.employer{ |n| n.cdata!(employer.to_s) }
+        node.employerHomePage{ |n| n.cdata!(employer_home_page.to_s) }
+        node.opportunities{ |n| n.cdata!(opportunities.to_s) }
         node.fromdate(from_date)
         node.todate(to_date)
-        node.externalLogoUrl(external_logo_url)
-        node.applicationURL(application_url)
+        node.externalLogoUrl{ |n| n.cdata!(external_logo_url.to_s) }
+        node.applicationURL { |n| n.cdata!(application_url.to_s) }
 
         location.to_xml(builder: node) if location
         contact.to_xml(builder: node) if contact

@@ -8,9 +8,9 @@ RSpec.describe Metrojobb::Location do
     xml = location.to_xml
 
     expect(xml).to include('<location>')
-    expect(xml).to include('<street>abc street</street>')
-    expect(xml).to include('<postalCode>123</postalCode>')
-    expect(xml).to include('<city>Stockholm</city>')
+    expect(xml).to include('<street><![CDATA[abc street]]></street>')
+    expect(xml).to include('<postalCode><![CDATA[123]]></postalCode>')
+    expect(xml).to include('<city><![CDATA[Stockholm]]></city>')
   end
 
   it 'has #valid? method' do

@@ -12,26 +12,31 @@ RSpec.describe Metrojobb::Ad do
 
   describe '#to_xml' do
     [
-      [:external_application, 'externalApplication', 'externalapplication'],
-      [:heading, 'heading', 'heading'],
-      [:job_title, 'jobTitle', 'jobtitle'],
-      [:summary, 'summary', 'summary'],
-      [:description, 'description', 'description'],
-      [:employer, 'employer', 'employer'],
-      [:employer_home_page, 'employerHomePage', 'employerhomepage'],
-      [:opportunities, 'opportunities', 'opportunities'],
-      [:from_date, 'fromdate', 'fromdate'],
-      [:to_date, 'todate', 'todate'],
-      [:external_logo_url, 'externalLogoUrl', 'externallogourl'],
-      [:application_url, 'applicationURL', 'applicationurl']
+      # attribute, node_name, value, cdata
+      [:external_application, 'externalApplication', 'watman', false],
+      [:heading, 'heading', 'watman', true],
+      [:job_title, 'jobTitle', 'watman', true],
+      [:summary, 'summary', 'watman', true],
+      [:description, 'description', 'watman', true],
+      [:employer, 'employer', 'watman', true],
+      [:employer_home_page, 'employerHomePage', 'http://exmple.com', true],
+      [:opportunities, 'opportunities', 'watman', true],
+      [:from_date, 'fromdate', '2018-09-01', false],
+      [:to_date, 'todate', '2018-09-01', false],
+      [:external_logo_url, 'externalLogoUrl', 'http://exmple.com', true],
+      [:application_url, 'applicationURL', 'http://exmple.com', true]
     ].each do |data|
-      attribute, node_name, value = data
+      attribute, node_name, value, cdata = data
 
       it "includes #{node_name} node_name and value" do
         ad = Metrojobb::Ad.new(attribute => value)
         xml = ad.to_xml
 
-        expect(xml).to include("<#{node_name}>#{value}</#{node_name}>")
+        if cdata
+          expect(xml).to include("<#{node_name}><![CDATA[#{value}]]></#{node_name}>")
+        else
+          expect(xml).to include("<#{node_name}>#{value}</#{node_name}>")
+        end
       end
     end
 

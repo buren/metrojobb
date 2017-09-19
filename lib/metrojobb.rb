@@ -12,4 +12,5 @@ require 'metrojobb/location'
 require 'metrojobb/region'
 
 module Metrojobb
+  DEFAULT_INDENT = 0
 end
