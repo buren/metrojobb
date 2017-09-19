@@ -14,20 +14,20 @@ module Metrojobb
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.employmentType do |node|
-        node.id(metrojobb_id)
+        node.id(employment_type_id)
       end
     end
 
-    def metrojobb_id
+    def employment_type_id
       NAME_ID_MAP[name.presence || id.presence] ||
         id.presence ||
         name.presence
     end
 
     def validate_known_employment_type
-      return if ID_NAME_MAP[metrojobb_id]
+      return if ID_NAME_MAP[employment_type_id]
 
-      errors.add(:metrojobb_id, :inclusion)
+      errors.add(:employment_type_id, :inclusion)
     end
   end
 end
