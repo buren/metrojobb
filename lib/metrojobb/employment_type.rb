@@ -14,8 +14,7 @@ module Metrojobb
 
     validate :validate_known_employment_type
 
-    def to_xml
-      builder = Builder::XmlMarkup.new(indent: 2)
+    def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.employmentType do |node|
         node.id(metrojobb_id)
       end

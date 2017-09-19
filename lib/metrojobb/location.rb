@@ -6,8 +6,7 @@ module Metrojobb
 
     attr_accessor :street, :postal_code, :city
 
-    def to_xml
-      builder = Builder::XmlMarkup.new(indent: 2)
+    def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.location do |node|
         node.street(street) if street.present?
         node.postalCode(postal_code) if postal_code.present?

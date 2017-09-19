@@ -14,8 +14,7 @@ module Metrojobb
 
     validate :validate_known_region
 
-    def to_xml
-      builder = Builder::XmlMarkup.new(indent: 2)
+    def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.region do |node|
         node.id(region_id)
       end

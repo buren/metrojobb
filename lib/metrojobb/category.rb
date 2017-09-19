@@ -15,8 +15,7 @@ module Metrojobb
 
     validate :validate_known_category
 
-    def to_xml
-      builder = Builder::XmlMarkup.new(indent: 2)
+    def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.category do |node|
         node.id(category_id)
       end

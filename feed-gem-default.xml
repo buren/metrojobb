@@ -4,7 +4,7 @@
     <externalApplication>true</externalApplication>
     <heading></heading><!-- Required -->
     <jobTitle></jobTitle><!-- Required -->
-    <summary></summary>
+    <summary></summary><!-- Required -->
     <description></description><!-- Required -->
     <location>
       <city></city>

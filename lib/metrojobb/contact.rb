@@ -6,8 +6,7 @@ module Metrojobb
 
     attr_accessor :name, :phone, :email
 
-    def to_xml
-      builder = Builder::XmlMarkup.new(indent: 2)
+    def to_xml(builder: Builder::XmlMarkup.new(indent: 2))
       builder.contact do |node|
         node.name(name) if name.present?
         node.phone(phone) if phone.present?
