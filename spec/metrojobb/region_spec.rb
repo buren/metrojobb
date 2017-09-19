@@ -1,4 +1,15 @@
 RSpec.describe Metrojobb::Region do
+  describe '#to_xml!' do
+    it 'raises InvalidModelError if invalid' do
+      ad = Metrojobb::Region.new
+      ad.validate
+
+      expect do
+        ad.to_xml!
+      end.to raise_error(Metrojobb::Model::InvalidError)
+    end
+  end
+
   it 'can convert it self to XML' do
     contact = Metrojobb::Region.new(name: 'Stockholms län')
     xml = contact.to_xml

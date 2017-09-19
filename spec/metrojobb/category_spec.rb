@@ -1,4 +1,15 @@
 RSpec.describe Metrojobb::Category do
+  describe '#to_xml!' do
+    it 'raises InvalidModelError if invalid' do
+      ad = Metrojobb::Category.new
+      ad.validate
+
+      expect do
+        ad.to_xml!
+      end.to raise_error(Metrojobb::Model::InvalidError)
+    end
+  end
+
   it 'can convert it self to XML' do
     contact = Metrojobb::Category.new(name: 'Administration')
     xml = contact.to_xml

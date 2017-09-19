@@ -1,4 +1,15 @@
 RSpec.describe Metrojobb::Ad do
+  describe '#to_xml!' do
+    it 'raises InvalidModelError if invalid' do
+      ad = Metrojobb::Ad.new
+      ad.validate
+
+      expect do
+        ad.to_xml!
+      end.to raise_error(Metrojobb::Model::InvalidError)
+    end
+  end
+
   describe '#to_xml' do
     [
       [:external_application, 'externalApplication', 'externalapplication'],
