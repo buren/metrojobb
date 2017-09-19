@@ -1,4 +1,4 @@
-# Metrojobb
+# Metrojobb [![Build Status](https://travis-ci.org/buren/metrojobb.svg?branch=master)](https://travis-ci.org/buren/metrojobb)
 
 Build a feed for Metrojobb with ease.
 
