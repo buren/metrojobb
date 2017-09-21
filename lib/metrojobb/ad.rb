@@ -58,18 +58,18 @@ module Metrojobb
     def to_xml(builder: Builder::XmlMarkup.new(indent: DEFAULT_INDENT))
       builder.ad(orderno: order_number) do |node|
         node.externalApplication(external_application)
-        node.heading { |n| n.cdata!(heading.to_s) }
-        node.jobTitle { |n| n.cdata!(job_title.to_s) }
-        node.summary { |n| n.cdata!(summary.to_s) }
-        node.description{ |n| n.cdata!(description.to_s) }
-        node.employer{ |n| n.cdata!(employer.to_s) }
-        node.employerHomePage{ |n| n.cdata!(employer_home_page.to_s) }
-        node.opportunities{ |n| n.cdata!(opportunities.to_s) }
+        node.heading { |n| n.cdata!(heading.to_s) } if heading.present?
+        node.jobTitle { |n| n.cdata!(job_title.to_s) } if job_title.present?
+        node.summary { |n| n.cdata!(summary.to_s) } if summary.present?
+        node.description { |n| n.cdata!(description.to_s) } if description.present?
+        node.employer { |n| n.cdata!(employer.to_s) } if employer.present?
+        node.employerHomePage { |n| n.cdata!(employer_home_page.to_s) } if employer_home_page.present?
+        node.opportunities { |n| n.cdata!(opportunities.to_s) } if opportunities.present?
         node.fromdate(from_date)
         node.todate(to_date)
-        node.externalLogoUrl{ |n| n.cdata!(external_logo_url.to_s) }
-        node.applicationURL { |n| n.cdata!(application_url.to_s) }
-        node.videoURL { |n| n.cdata!(video_url.to_s) }
+        node.externalLogoUrl { |n| n.cdata!(external_logo_url.to_s) } if external_logo_url.present?
+        node.applicationURL { |n| n.cdata!(application_url.to_s) } if application_url.present?
+        node.videoURL { |n| n.cdata!(video_url.to_s) } if video_url.present?
 
         location.to_xml(builder: node) if location
         contact.to_xml(builder: node) if contact

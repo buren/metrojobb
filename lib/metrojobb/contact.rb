@@ -6,9 +6,9 @@ module Metrojobb
 
     def to_xml(builder: Builder::XmlMarkup.new(indent: DEFAULT_INDENT))
       builder.contact do |node|
-        node.name { |n| n.cdata!(name.to_s) }
-        node.phone { |n| n.cdata!(phone.to_s) }
-        node.email { |n| n.cdata!(email.to_s) }
+        node.name { |n| n.cdata!(name.to_s) } if name.present?
+        node.phone { |n| n.cdata!(phone.to_s) } if phone.present?
+        node.email { |n| n.cdata!(email.to_s) } if email.present?
       end
     end
   end

@@ -28,7 +28,7 @@ Create full XML-document
 
 ```ruby
 ads = Metrojobb::Ads.new([ad])
-ads.to_xml # Returns full XML document
+ads.to_xml # Returns the full XML document
 ```
 
 Single model
