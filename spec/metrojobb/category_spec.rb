@@ -15,7 +15,7 @@ RSpec.describe Metrojobb::Category do
     xml = contact.to_xml
 
     expect(xml).to include('<category>')
-    expect(xml).to include('<id>1800</id>')
+    expect(xml).to include('<id>1</id>')
   end
 
   describe '#valid?' do
@@ -43,13 +43,13 @@ RSpec.describe Metrojobb::Category do
   describe '#category_id' do
     [
       # input, expected
-      ['Administration', '1800'], # NOTE: There is a duplicate in the raw data (row 1 and 1805)
-      ['1800', '1800'],
-      ['Data / IT', '1802'], # NOTE: There is a duplicate in the raw data (row 3 and 1802)
-      ['1802', '1802'],
-      ['Utvecklare / Programmerare', '305'],
+      ['Administration', '1'],
+      ['1', '1'],
+      ['Data / IT', '3'],
+      ['3', '3'],
+      ['Data / IT > Utvecklare / Programmerare', '305'],
       ['305', '305'],
-      ['Apotekare / Farmaceutisk rådgivare', '1901'],
+      ['Sjukvård & Hälsa > Apotekare / Farmaceutisk rådgivare', '1901'],
       # bad data
       [nil, nil],
       ['111111111', '111111111'],
